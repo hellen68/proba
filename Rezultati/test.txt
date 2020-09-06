@@ -1,0 +1,5 @@
+i7-7800X	Core i7	3.5GHz	 6144L2	8.25L3	6cores
+i7-8086K	Core i7	4GHz	 1536L2	12L3	6cores
+i7-8700	        Core i7	3.2GHz	 1536L2	12L3	6cores
+i7-8700K	Core i7	3.7GHz	 1536L2	12L3	6cores
+i7-8700T	Core i7	2.4GHz	 1536L2	12L3	6cores

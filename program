@@ -1,0 +1,41 @@
+#!/bin/bash
+
+izlaz() {
+	mkdir Rezultati &> /dev/null
+	ime=$(date | sed 's/ //g')
+}
+
+unos() {
+	echo -ne "[${zelena}+${default}] Broj jezgara: "
+	read jezgra
+	echo -ne "[${zelena}+${default}] Frekvencija radnog takta (${zelena}GHz${default}): "
+	read frekvencija
+	echo -ne "[${zelena}+${default}] Velicina L2 kesa (${zelena}KB${default}): "
+	read l2
+	echo -ne "[${zelena}+${default}] Velicina L3 kesa (${zelena}MB${default}): "
+	read l3
+}
+
+lista() {
+	echo -n -e "\n[${zuta}*${default}] Procesori koji odgovaraju navedenim uslovima: \n"
+	cat modeli.txt | grep ${jezgra}cores | grep ${frekvencija}GHz | grep ${l2}L2 | grep ${l3}L3 | tee Rezultati/${ime}.txt
+	echo -n -e "\n[${zuta}*${default}] Rezultati spaseni u: ${plava}/Rezultati/${ime}.txt${default}."
+}
+
+main() {
+	clear
+	izlaz
+	unos
+	lista
+        echo -n -e "\n[${zuta}+${default}] Pritisni ${zelena}Enter${default} za ponovnu pretragu, ${crvena}Ctrl+Z${default} za izlaz: "
+        read
+	main
+}
+
+	crvena='\033[0;31m'
+	zelena='\033[0;32m'
+	zuta='\033[0;33m'
+	plava='\033[0;34m'
+        default='\033[0;39m'
+
+	main
